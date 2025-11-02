@@ -12,7 +12,10 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60*24
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
-def hash_password(password: str) -> str:
+def hash_password(password: str):
+    # bcrypt supports up to 72 bytes — truncate if necessary
+    if len(password.encode("utf-8")) > 72:
+        password = password[:72]
     return pwd_context.hash(password)
 
 def verify_password(plain, hashed) -> bool:

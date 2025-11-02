@@ -1,9 +1,11 @@
 fastapi
 uvicorn[standard]
-sqlmodel     
-passlib[bcrypt]
+sqlmodel    
 python-jose[cryptography]
 pytest
 httpx
 pytest-asyncio
 python-dotenv
+bcrypt==3.2.2
+passlib[bcrypt]==1.7.4
+
